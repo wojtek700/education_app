@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "82345376775",
+    "project_id": "education-app-8d22d",
+    "storage_bucket": "education-app-8d22d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82345376775:android:9590c0c7cc8c7c3a51bea2",
+        "android_client_info": {
+          "package_name": "com.dbestech.education_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82345376775-m4i5hto110cf90iqsbeokc0bnhm4758d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQGk9LKrmb0Z5lqXGpajCUMs8TkRUoMYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82345376775-m4i5hto110cf90iqsbeokc0bnhm4758d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
