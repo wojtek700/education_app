@@ -2,7 +2,7 @@
 // ignore_for_file: lines_longer_than_80_chars, avoid_classes_with_only_static_members
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+    show TargetPlatform, defaultTargetPlatform, kIsWeb;
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '82345376775',
     projectId: 'education-app-8d22d',
     storageBucket: 'education-app-8d22d.appspot.com',
-    iosClientId: '82345376775-thpugduk7690h3g7q7kh4cpd3u4gron3.apps.googleusercontent.com',
+    iosClientId:
+        '82345376775-thpugduk7690h3g7q7kh4cpd3u4gron3.apps.googleusercontent.com',
     iosBundleId: 'com.dbestech.educationApp',
   );
 }
