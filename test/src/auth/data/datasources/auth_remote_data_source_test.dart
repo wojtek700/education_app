@@ -123,6 +123,32 @@ void main() {
       ).called(1);
       verifyNoMoreInteractions(authClient);
     });
+
+    test('should throw [ServerException] when user is null after signing in',
+        () async {
+      final emptyUserCredential = MockUserCredential();
+      when(
+        () => authClient.signInWithEmailAndPassword(
+          email: any(named: 'email'),
+          password: any(named: 'password'),
+        ),
+      ).thenAnswer((_) async => emptyUserCredential);
+      final call = dataSource.signIn;
+      expect(
+        () => call(email: tEmail, password: tPassword),
+        throwsA(
+          isA<ServerException>(),
+        ),
+      );
+      verify(
+        () => authClient.signInWithEmailAndPassword(
+          email: tEmail,
+          password: tPassword,
+        ),
+      ).called(1);
+      verifyNoMoreInteractions(authClient);
+    });
+
     test(
         'should throw [ServerException] when [FirebaseAuthException] is thrown',
         () async {
@@ -137,6 +163,13 @@ void main() {
         () => call(email: tEmail, password: tPassword),
         throwsA(isA<ServerException>()),
       );
+      verify(
+        () => authClient.signInWithEmailAndPassword(
+          email: tEmail,
+          password: tPassword,
+        ),
+      ).called(1);
+      verifyNoMoreInteractions(authClient);
     });
   });
 }
