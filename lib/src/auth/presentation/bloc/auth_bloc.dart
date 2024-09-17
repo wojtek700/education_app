@@ -23,12 +23,29 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         _updateUser = updateUser,
         super(const AuthInitial()) {
     on<AuthEvent>((event, emit) {
-      // TODO: implement event handler
+      emit(const AuthLoading());
     });
+    on<SignInEvent>(_signInHandler);
   }
 
   final SignIn _signIn;
   final SignUp _signUp;
   final ForgotPassword _forgotPassword;
   final UpdateUser _updateUser;
+
+  Future<void> _signInHandler(
+    SignInEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    final result = await _signIn(
+      SignInParams(
+        email: event.email,
+        password: event.password,
+      ),
+    );
+    result.fold(
+      (failure) => emit(AuthError(failure.errorMessage)),
+      (user) => emit(SignedIn(user)),
+    );
+  }
 }
