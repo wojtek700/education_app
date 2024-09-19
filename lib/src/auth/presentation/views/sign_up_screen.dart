@@ -1,4 +1,4 @@
-import 'package:education_app/core/app/providers/user_provider.dart';
+import 'package:education_app/core/common/app/providers/user_provider.dart';
 import 'package:education_app/core/common/widgets/gradient_background.dart';
 import 'package:education_app/core/common/widgets/rounded_button.dart';
 import 'package:education_app/core/res/fonts.dart';
