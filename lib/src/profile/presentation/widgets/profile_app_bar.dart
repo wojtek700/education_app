@@ -57,10 +57,14 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             ),
-            const PopupMenuItem<void>(
+            PopupMenuItem<void>(
+              height: 1,
+              padding: EdgeInsets.zero,
               child: Divider(
                 height: 1,
-                color: Colors.grey,
+                color: Colors.grey.shade300,
+                endIndent: 16,
+                indent: 16,
               ),
             ),
             PopupMenuItem<void>(
@@ -74,10 +78,12 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
               onTap: () async {
                 final navigator = Navigator.of(context);
                 await FirebaseAuth.instance.signOut();
-                unawaited(navigator.pushNamedAndRemoveUntil(
-                  '/',
-                  (route) => false,
-                ));
+                unawaited(
+                  navigator.pushNamedAndRemoveUntil(
+                    '/',
+                    (route) => false,
+                  ),
+                );
               },
             ),
           ],
