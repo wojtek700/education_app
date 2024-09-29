@@ -21,6 +21,5 @@ class NotFoundText extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }
