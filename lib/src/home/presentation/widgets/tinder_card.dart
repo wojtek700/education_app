@@ -25,7 +25,7 @@ class TinderCard extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(.15),
-            offset: const Offset(0, 5),
+            offset: const Offset(0, 4),
             blurRadius: 10,
           ),
         ],
