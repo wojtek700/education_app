@@ -1,5 +1,5 @@
 import 'package:education_app/core/utils/typedefs.dart';
-import 'package:education_app/src/course/features/exams/data/model/question_choice_model.dart';
+import 'package:education_app/src/course/features/exams/data/models/question_choice_model.dart';
 import 'package:education_app/src/course/features/exams/domain/entities/exam_question.dart';
 import 'package:education_app/src/course/features/exams/domain/entities/question_choice.dart';
 

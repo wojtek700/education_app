@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:education_app/core/utils/typedefs.dart';
-import 'package:education_app/src/course/features/exams/data/model/exam_question_model.dart';
+import 'package:education_app/src/course/features/exams/data/models/exam_question_model.dart';
 import 'package:education_app/src/course/features/exams/domain/entities/exam_question.dart';
 import 'package:education_app/src/course/features/exams/domain/entities/question_choice.dart';
 import 'package:flutter_test/flutter_test.dart';

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:education_app/core/utils/typedefs.dart';
-import 'package:education_app/src/course/features/exams/data/model/exam_model.dart';
+import 'package:education_app/src/course/features/exams/data/models/exam_model.dart';
 import 'package:education_app/src/course/features/exams/domain/entities/exam.dart';
 import 'package:flutter_test/flutter_test.dart';
 import '../../../../../../fixtures/fixture_reader.dart';

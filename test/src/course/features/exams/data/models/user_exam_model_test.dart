@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:education_app/core/utils/typedefs.dart';
-import 'package:education_app/src/course/features/exams/data/model/user_exam_model.dart';
+import 'package:education_app/src/course/features/exams/data/models/user_exam_model.dart';
 import 'package:education_app/src/course/features/exams/domain/entities/user_exam.dart';
 import 'package:flutter_test/flutter_test.dart';
 
