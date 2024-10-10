@@ -4,6 +4,7 @@ import 'package:education_app/core/services/injection_container.dart';
 import 'package:education_app/src/course/features/videos/presentation/cubit/video_cubit.dart';
 import 'package:education_app/src/course/presentation/cubit/course_cubit.dart';
 import 'package:education_app/src/home/presentation/views/home_view.dart';
+import 'package:education_app/src/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:education_app/src/profile/presentation/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,8 @@ class DashboardController extends ChangeNotifier {
           child: MultiBlocProvider(
             providers: [
               BlocProvider(create: (_) => sl<CourseCubit>()),
-              BlocProvider(create: (context) => sl<VideoCubit>()),
+              BlocProvider(create: (_) => sl<VideoCubit>()),
+              BlocProvider(create: (_) => sl<NotificationCubit>()),
             ],
             child: const HomeView(),
           ),
@@ -54,7 +56,6 @@ class DashboardController extends ChangeNotifier {
 
   void goBack() {
     if (_indexHistory.length == 1) return;
-
     _indexHistory.removeLast();
     _currentIndex = _indexHistory.last;
     notifyListeners();
