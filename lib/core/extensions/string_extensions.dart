@@ -7,4 +7,7 @@ extension StringExt on String {
     username = '${username[0]}****${username[username.length - 1]}';
     return '$username@$domain';
   }
+
+  bool get isYouTubeVideo =>
+      contains('youtube.com/watch?v=') || contains('youtu.be/');
 }

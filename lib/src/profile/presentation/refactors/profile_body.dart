@@ -3,6 +3,9 @@ import 'package:education_app/core/extensions/context_extension.dart';
 import 'package:education_app/core/res/colours.dart';
 import 'package:education_app/core/res/media_res.dart';
 import 'package:education_app/core/services/injection_container.dart';
+import 'package:education_app/src/course/features/exams/presentation/views/add_exam_view.dart';
+import 'package:education_app/src/course/features/materials/presentation/views/add_materials_view.dart';
+import 'package:education_app/src/course/features/videos/presentation/views/add_video_view.dart';
 import 'package:education_app/src/course/presentation/cubit/course_cubit.dart';
 import 'package:education_app/src/course/presentation/widgets/add_course_sheet.dart';
 import 'package:education_app/src/profile/presentation/widgets/admin_buttton.dart';
@@ -102,6 +105,27 @@ class ProfileBody extends StatelessWidget {
                       child: const AddCourseSheet(),
                     ),
                   );
+                },
+              ),
+              AdminButton(
+                label: 'Add Video',
+                icon: IconlyLight.video,
+                onPressed: () {
+                  Navigator.pushNamed(context, AddVideoView.routeName);
+                },
+              ),
+              AdminButton(
+                label: 'Add Materials',
+                icon: IconlyLight.paper_download,
+                onPressed: () {
+                  Navigator.pushNamed(context, AddMaterialsView.routeName);
+                },
+              ),
+              AdminButton(
+                label: 'Add Exam',
+                icon: IconlyLight.document,
+                onPressed: () {
+                  Navigator.pushNamed(context, AddExamView.routeName);
                 },
               ),
             ],
