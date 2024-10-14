@@ -47,4 +47,21 @@ class VideoUtils {
       return null;
     }
   }
+
+  static Future<void> playVideo(BuildContext context, String videoURL) async {
+    if (videoURL.isYoutubeVideo) {
+      if (!await launchUrl(
+        Uri.parse(videoURL),
+        mode: LaunchMode.externalApplication,
+      )) {
+        // ignore: use_build_context_synchronously
+        CoreUtils.showSnackBar(
+          context,
+          'Could not launch $videoURL',
+        );
+      } else {
+        // context.push(VideoPlayerView())
+      }
+    }
+  }
 }

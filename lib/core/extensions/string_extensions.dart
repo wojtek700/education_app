@@ -8,6 +8,6 @@ extension StringExt on String {
     return '$username@$domain';
   }
 
-  bool get isYouTubeVideo =>
+  bool get isYoutubeVideo =>
       contains('youtube.com/watch?v=') || contains('youtu.be/');
 }

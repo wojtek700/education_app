@@ -1,5 +1,6 @@
 import 'package:education_app/core/common/views/loading_view.dart';
 import 'package:education_app/core/common/widgets/not_found_text.dart';
+import 'package:education_app/core/common/widgets/video_tile.dart';
 import 'package:education_app/core/extensions/context_extension.dart';
 import 'package:education_app/core/services/injection_container.dart';
 import 'package:education_app/core/utils/core_utils.dart';
@@ -52,13 +53,17 @@ class _HomeVideosState extends State<HomeVideos> {
                 seeAll: state.videos.length > 4,
                 onSeeAll: () => context.push(
                   BlocProvider(
-                    create: (context) => sl<VideoCubit>(),
+                    create: (_) => sl<VideoCubit>(),
                     // child: CourseVideosView(),
                   ),
                 ),
               ),
               const SizedBox(height: 20),
-              for (final video in state.videos.take(5)) const Placeholder(),
+              for (final video in state.videos.take(5))
+                VideoTile(
+                  video,
+                  tappable: true,
+                ),
             ],
           );
         }

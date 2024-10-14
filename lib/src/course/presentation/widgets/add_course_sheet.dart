@@ -1,13 +1,11 @@
 import 'dart:io';
 import 'package:education_app/core/common/widgets/titled_input_field.dart';
 import 'package:education_app/core/enums/notification_enum.dart';
-import 'package:education_app/core/services/injection_container.dart';
 import 'package:education_app/core/utils/constants.dart';
 import 'package:education_app/core/utils/core_utils.dart';
 import 'package:education_app/src/course/data/models/course_model.dart';
 import 'package:education_app/src/course/presentation/cubit/course_cubit.dart';
-import 'package:education_app/src/notifications/data/models/notification_model.dart';
-import 'package:education_app/src/notifications/presentation/cubit/notification_cubit.dart';
+import 'package:education_app/src/notifications/presentation/presentation/widgets/notification_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,7 +24,9 @@ class _AddCourseSheetState extends State<AddCourseSheet> {
   final formKey = GlobalKey<FormState>();
 
   File? image;
+
   bool isFile = false;
+
   bool loading = false;
 
   @override
@@ -50,17 +50,15 @@ class _AddCourseSheetState extends State<AddCourseSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<NotificationCubit, NotificationState>(
-      listener: (context, state) {
-        if (state is NotificationSent) {
-          if (loading) {
-            Navigator.of(context).pop();
-          }
+    return NotificationWrapper(
+      onNotificationSent: () {
+        if (loading) {
           Navigator.of(context).pop();
         }
+        Navigator.of(context).pop();
       },
       child: BlocListener<CourseCubit, CourseState>(
-        listener: (context, state) {
+        listener: (_, state) {
           if (state is CourseError) {
             CoreUtils.showSnackBar(context, state.message);
           } else if (state is AddingCourse) {
@@ -74,18 +72,18 @@ class _AddCourseSheetState extends State<AddCourseSheet> {
             CoreUtils.showSnackBar(context, 'Course added successfully');
             CoreUtils.showLoadingDialog(context);
             loading = true;
-            sl<NotificationCubit>().sendNotification(
-              NotificationModel.empty().copyWith(
-                title: 'New Course(${titleController.text.trim()})',
-                body: 'A new course has been added',
-                category: NotificationCategory.COURSE,
-              ),
+            CoreUtils.sendNotification(
+              context,
+              title: 'New Course(${titleController.text.trim()})',
+              body: 'A new course has been added',
+              category: NotificationCategory.COURSE,
             );
           }
         },
         child: Padding(
-          padding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
           child: Container(
             padding: const EdgeInsets.all(20),
             decoration: const BoxDecoration(
@@ -98,7 +96,7 @@ class _AddCourseSheetState extends State<AddCourseSheet> {
                 shrinkWrap: true,
                 children: [
                   const Text(
-                    'Add Course ',
+                    'Add Course',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -135,7 +133,7 @@ class _AddCourseSheetState extends State<AddCourseSheet> {
                           imageController.text = imageName;
                         }
                       },
-                      icon: const Icon(Icons.add_a_photo_outlined),
+                      icon: const Icon(Icons.add_photo_alternate_outlined),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -164,9 +162,7 @@ class _AddCourseSheetState extends State<AddCourseSheet> {
                           child: const Text('Add'),
                         ),
                       ),
-                      const SizedBox(
-                        width: 20,
-                      ),
+                      const SizedBox(width: 20),
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () => Navigator.pop(context),
