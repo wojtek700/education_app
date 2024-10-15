@@ -40,7 +40,7 @@ class _CoursePickerState extends State<CoursePicker> {
         } else if (state is CoursesLoaded && state.courses.isEmpty) {
           CoreUtils.showSnackBar(
             context,
-            'No courses found\nPlease add the course first',
+            'No courses found\nPlease add a course first',
           );
           Navigator.pop(context);
         }
@@ -52,9 +52,7 @@ class _CoursePickerState extends State<CoursePicker> {
           decoration: InputDecoration(
             labelText: 'Pick Course',
             border: const OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colours.primaryColour,
-              ),
+              borderSide: BorderSide(color: Colours.primaryColour),
             ),
             contentPadding: const EdgeInsets.symmetric(horizontal: 10),
             suffixIcon: state is CoursesLoaded
@@ -90,7 +88,7 @@ class _CoursePickerState extends State<CoursePicker> {
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please picka course';
+              return 'Please pick a course';
             }
             return null;
           },
