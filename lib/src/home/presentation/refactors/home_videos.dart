@@ -60,10 +60,7 @@ class _HomeVideosState extends State<HomeVideos> {
               ),
               const SizedBox(height: 20),
               for (final video in state.videos.take(5))
-                VideoTile(
-                  video,
-                  tappable: true,
-                ),
+                VideoTile(video, tappable: true),
             ],
           );
         }

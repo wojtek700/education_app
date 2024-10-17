@@ -3,6 +3,7 @@ import 'package:education_app/core/common/widgets/gradient_background.dart';
 import 'package:education_app/core/common/widgets/nested_back_button.dart';
 import 'package:education_app/core/common/widgets/not_found_text.dart';
 import 'package:education_app/core/common/widgets/video_tile.dart';
+import 'package:education_app/core/res/colours.dart';
 import 'package:education_app/core/res/media_res.dart';
 import 'package:education_app/core/utils/core_utils.dart';
 import 'package:education_app/src/course/domain/entities/course.dart';
@@ -77,14 +78,26 @@ class _CourseVideosViewState extends State<CourseVideosView> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Something'),
-                    const Text('Something'),
+                    Text(
+                      '${widget.course.title} Videos',
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      '${state.videos.length} video(s) found',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colours.neutralTextColour,
+                      ),
+                    ),
                     const SizedBox(height: 20),
                     Expanded(
                       child: ListView.builder(
                         itemCount: state.videos.length,
                         itemBuilder: (_, index) {
-                          return VideoTile(videos[index]);
+                          return VideoTile(videos[index], tappable: true);
                         },
                       ),
                     ),

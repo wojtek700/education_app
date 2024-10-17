@@ -98,6 +98,14 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         settings: settings,
       );
 
+    case VideoPlayerView.routeName:
+      return _pageBuilder(
+        (_) => VideoPlayerView(
+          videoURL: settings.arguments! as String,
+        ),
+        settings: settings,
+      );
+
     case CourseVideosView.routeName:
       return _pageBuilder(
         (_) => BlocProvider(
