@@ -8,6 +8,7 @@ import 'package:education_app/core/utils/core_utils.dart';
 import 'package:education_app/src/course/domain/entities/course.dart';
 import 'package:education_app/src/course/features/materials/presentation/app/cubit/material_cubit.dart';
 import 'package:education_app/src/course/features/materials/presentation/app/providers/resource_controller.dart';
+import 'package:education_app/src/course/features/materials/presentation/widgets/resource_tile.dart';
 import 'package:flutter/material.dart' hide MaterialState;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -75,9 +76,7 @@ class _CourseMaterialsViewState extends State<CourseMaterialsView> {
                     return ChangeNotifierProvider(
                       create: (_) =>
                           sl<ResourceController>()..init(materials[index]),
-                      child: const Placeholder(
-                        fallbackHeight: 50,
-                      ),
+                      child: const ResourceTile(),
                     );
                   },
                 ),
