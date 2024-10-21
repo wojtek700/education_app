@@ -123,6 +123,15 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         settings: settings,
       );
 
+    case CourseExamView.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (_) => sl<ExamCubit>(),
+          child: CourseExamView(settings.arguments! as Course),
+        ),
+        settings: settings,
+      );
+
     default:
       return _pageBuilder(
         (_) => const PageUnderConstruction(),
