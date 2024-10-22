@@ -61,6 +61,28 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         (_) => CourseDetailsScreen(settings.arguments! as Course),
         settings: settings,
       );
+
+    case ExamDetailsView.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (context) => sl<ExamCubit>(),
+          child: ExamDetailsView(settings.arguments! as Exam),
+        ),
+        settings: settings,
+      );
+    case ExamView.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (context) => sl<ExamCubit>(),
+          child: ChangeNotifierProvider(
+            create: (context) => ExamController(
+              exam: settings.arguments! as Exam,
+            ),
+            child: const ExamView(),
+          ),
+        ),
+        settings: settings,
+      );
     case AddVideoView.routeName:
       return _pageBuilder(
         (_) => MultiBlocProvider(
@@ -97,15 +119,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         ),
         settings: settings,
       );
-
     case VideoPlayerView.routeName:
       return _pageBuilder(
-        (_) => VideoPlayerView(
-          videoURL: settings.arguments! as String,
-        ),
+        (_) => VideoPlayerView(videoURL: settings.arguments! as String),
         settings: settings,
       );
-
     case CourseVideosView.routeName:
       return _pageBuilder(
         (_) => BlocProvider(
@@ -122,16 +140,14 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         ),
         settings: settings,
       );
-
-    case CourseExamView.routeName:
+    case CourseExamsView.routeName:
       return _pageBuilder(
         (_) => BlocProvider(
           create: (_) => sl<ExamCubit>(),
-          child: CourseExamView(settings.arguments! as Course),
+          child: CourseExamsView(settings.arguments! as Course),
         ),
         settings: settings,
       );
-
     default:
       return _pageBuilder(
         (_) => const PageUnderConstruction(),

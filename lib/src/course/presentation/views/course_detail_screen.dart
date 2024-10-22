@@ -82,7 +82,7 @@ class CourseDetailsScreen extends StatelessWidget {
                         title: '${course.numberOfExams} Exam(s)',
                         subtitle: 'Take our exams for ${course.title}',
                         onTap: () => Navigator.of(context).pushNamed(
-                          CourseExamView.routeName,
+                          CourseExamsView.routeName,
                           arguments: course,
                         ),
                       ),
