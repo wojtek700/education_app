@@ -23,7 +23,9 @@ class ExamController extends ChangeNotifier {
     );
     _remainingTime = exam.timeLimit;
   }
+
   final Exam _exam;
+
   Exam get exam => _exam;
 
   final List<ExamQuestion> _questions;
@@ -31,7 +33,9 @@ class ExamController extends ChangeNotifier {
   int get totalQuestions => _questions.length;
 
   late UserExam _userExam;
+
   UserExam get userExam => _userExam;
+
   late int _remainingTime;
 
   bool get isTimeUp => _remainingTime == 0;
@@ -47,32 +51,38 @@ class ExamController extends ChangeNotifier {
     return '$minutes:$seconds';
   }
 
+  int get remainingTimeInSeconds => _remainingTime;
+
   int _currentIndex = 0;
+
   int get currentIndex => _currentIndex;
 
-  ExamQuestion get currentQuestion => _questions[currentIndex];
+  ExamQuestion get currentQuestion => _questions[_currentIndex];
 
   void startTimer() {
     _examStarted = true;
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (_remainingTime > 0) {
-        _remainingTime--;
-        notifyListeners();
-      } else {
-        timer.cancel();
-      }
-    });
+    _timer = Timer.periodic(
+      const Duration(seconds: 1),
+      (timer) {
+        if (_remainingTime > 0) {
+          _remainingTime--;
+          notifyListeners();
+        } else {
+          timer.cancel();
+        }
+      },
+    );
   }
 
   void stopTimer() {
     _timer?.cancel();
   }
 
-  UserChoice? get getAnswer {
-    final aswers = _userExam.answers;
+  UserChoice? get userAnswer {
+    final answers = _userExam.answers;
     var noAnswer = false;
     final questionId = currentQuestion.id;
-    final userChoice = aswers.firstWhere(
+    final userChoice = answers.firstWhere(
       (answer) => answer.questionId == questionId,
       orElse: () {
         noAnswer = true;
@@ -88,7 +98,7 @@ class ExamController extends ChangeNotifier {
   }
 
   void nextQuestion() {
-    if (!examStarted) startTimer();
+    if (!_examStarted) startTimer();
     if (_currentIndex < _questions.length - 1) {
       _currentIndex++;
       notifyListeners();
