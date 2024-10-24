@@ -61,13 +61,17 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         (_) => CourseDetailsScreen(settings.arguments! as Course),
         settings: settings,
       );
-
     case ExamDetailsView.routeName:
       return _pageBuilder(
         (_) => BlocProvider(
           create: (context) => sl<ExamCubit>(),
           child: ExamDetailsView(settings.arguments! as Exam),
         ),
+        settings: settings,
+      );
+    case ExamHistoryDetailsScreen.routeName:
+      return _pageBuilder(
+        (_) => ExamHistoryDetailsScreen(settings.arguments! as UserExam),
         settings: settings,
       );
     case ExamView.routeName:
