@@ -3,7 +3,7 @@ import 'package:education_app/core/extensions/context_extension.dart';
 import 'package:education_app/core/res/colours.dart';
 import 'package:education_app/src/course/domain/entities/course.dart';
 import 'package:education_app/src/course/presentation/views/all_courses_view.dart';
-import 'package:education_app/src/course/presentation/views/course_detail_screen.dart';
+import 'package:education_app/src/course/presentation/views/course_details_screen.dart';
 import 'package:education_app/src/home/presentation/widgets/section_header.dart';
 import 'package:flutter/material.dart';
 

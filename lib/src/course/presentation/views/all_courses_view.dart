@@ -3,7 +3,7 @@ import 'package:education_app/core/common/widgets/gradient_background.dart';
 import 'package:education_app/core/common/widgets/nested_back_button.dart';
 import 'package:education_app/core/res/media_res.dart';
 import 'package:education_app/src/course/domain/entities/course.dart';
-import 'package:education_app/src/course/presentation/views/course_detail_screen.dart';
+import 'package:education_app/src/course/presentation/views/course_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class AllCoursesView extends StatelessWidget {

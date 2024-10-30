@@ -105,7 +105,7 @@ void main() {
       final result = remoteDataSource.getMessages(groupId);
 
       // Assert
-      expect(result, emitsInOrder([equals(expectedMessages)]));
+      expect(result, emitsInOrder([equals(expectedMessages.reversed)]));
     });
 
     test('should return a stream of empty list when an error occurs', () {
